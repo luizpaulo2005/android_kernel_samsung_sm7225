@@ -219,7 +219,7 @@ skip:
 	return 0;
 }
 
-static void disconnect_usb_driver(struct usb_device *dev)
+static void __maybe_unused disconnect_usb_driver(struct usb_device *dev)
 {
 	struct usb_interface *intf = NULL;
 	struct usb_driver *driver = NULL;
