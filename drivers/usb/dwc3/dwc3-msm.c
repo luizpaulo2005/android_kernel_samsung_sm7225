@@ -4390,6 +4390,12 @@ static int dwc3_msm_probe(struct platform_device *pdev)
 	device_create_file(&pdev->dev, &dev_attr_usb_compliance_mode);
 	device_create_file(&pdev->dev, &dev_attr_bus_vote);
 
+	mdwc->dwc3_msm_probe_done = 1;
+
+#if IS_ENABLED(CONFIG_USB_NOTIFY_LAYER)
+	enable_usb_notify();
+#endif
+
 	return 0;
 
 put_dwc3:
